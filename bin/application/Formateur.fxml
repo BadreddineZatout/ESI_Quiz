@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FormateurController">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" stylesheets="@application.css" AnchorPane.bottomAnchor="475.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu id="Creer_Compte" mnemonicParsing="false" text="Creer_Compte">
+               <items>
+                  <MenuItem id="creer" mnemonicParsing="false" onAction="#CreerC" text="Creer" />
+               </items>
+          </Menu>
+          <Menu id="Gerer_Quiz" mnemonicParsing="false" text="Gerer_Quiz">
+               <items>
+                  <MenuItem fx:id="Gerer" mnemonicParsing="false" onAction="#GererQ" text="Gerer" />
+                  <MenuItem mnemonicParsing="false" onAction="#CreerQuestion" text="Creer Question" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="CreerForamtion">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#CreerF" text="CreerF" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Pane fx:id="CreerFormation" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <children>
+            <Label layoutX="48.0" layoutY="46.0" text="Nom De Formation">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="FormationName" layoutX="277.0" layoutY="44.0" />
+            <Label layoutX="48.0" layoutY="144.0" text="Description De Formation">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="FormationDescription" layoutX="277.0" layoutY="93.0" prefHeight="121.0" prefWidth="342.0" />
+            <DatePicker fx:id="DateDebut" layoutX="277.0" layoutY="272.0" />
+            <DatePicker fx:id="DateFin" layoutX="277.0" layoutY="345.0" />
+            <Label layoutX="48.0" layoutY="275.0" text="Date De Debut">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="48.0" layoutY="348.0" text="Date De Fin">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="294.0" layoutY="419.0" mnemonicParsing="false" onMouseClicked="#CreerFormation" text="Creer" />
+            <Label fx:id="erreur4" layoutX="237.0" layoutY="392.0" text="les quizs ou les  apprenants n'existe pas " textFill="RED" visible="false" />
+            <Label fx:id="erreur5" layoutX="20.0" layoutY="392.0" text="remplit tous" textFill="RED" visible="false" />
+         </children>
+      </Pane>
+      <Pane fx:id="GererQuiz" layoutY="25.0" maxHeight="-Infinity" prefHeight="475.0" prefWidth="640.0" visible="false">
+         <children>
+            <SplitPane dividerPositions="0.0" layoutY="10.0" minHeight="475.0" orientation="VERTICAL" prefHeight="475.0" prefWidth="620.0">
+              <items>
+                <AnchorPane maxHeight="-Infinity" minHeight="240.0" minWidth="0.0" prefHeight="240.0" prefWidth="428.0">
+                     <children>
+                        <Label fx:id="erreur" layoutX="15.0" layoutY="199.0" text="remplit tous" textFill="RED" visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="15.0" layoutY="50.0" text="Nom De Quiz">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="QuizName" layoutX="130.0" layoutY="50.0" />
+                        <Label layoutX="15.0" layoutY="90.0" text="Date_De_Debut">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="Date_De_Debut" layoutX="130.0" layoutY="90.0" />
+                        <Label layoutX="15.0" layoutY="130.0" text="Date_De_Fin">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <DatePicker fx:id="Date_De_Fin" layoutX="130.0" layoutY="130.0" />
+                        <RadioButton fx:id="Oui" layoutX="130.0" layoutY="160.0" mnemonicParsing="false" text="Oui">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Ouvert" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="Non" layoutX="180.0" layoutY="160.0" mnemonicParsing="false" text="Non" toggleGroup="$Ouvert" />
+                        <Label layoutX="15.0" layoutY="160.0" text="Ouvert">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button layoutX="201.0" layoutY="198.0" mnemonicParsing="false" onMouseClicked="#CreerQuiz" text="Creer Quiz" />
+                        <Label layoutX="182.0" layoutY="14.0" text="Creer Quiz">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="erreur1" layoutX="25.0" layoutY="209.0" text="remplit tous" textFill="RED" visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="erreur2" layoutX="369.0" layoutY="199.0" text="Quiz Exist deja" textFill="RED" visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" minHeight="215.0" minWidth="0.0" prefHeight="260.0" prefWidth="498.0">
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <children>
+                        <Label layoutX="28.0" layoutY="57.0" text="Nom De Quiz">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="QUIZN" layoutX="130.0" layoutY="56.0" />
+                        <Label layoutX="28.0" layoutY="116.0" text="Nom De Notion ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="NotionName" layoutX="130.0" layoutY="114.0" />
+                        <Button layoutX="185.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#AjouterNotion" text="Ajouter" />
+                        <Label layoutX="168.0" layoutY="10.0" text="Ajouter Notion">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="erreur3" layoutX="221.0" layoutY="192.0" text="Quiz N'exist pas" textFill="RED" visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </Pane>
+      <Pane fx:id="CreerPane" layoutX="49.0" layoutY="83.0" prefHeight="475.0" prefWidth="500.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <Label layoutX="50.0" layoutY="100.0" text="Nom">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="150.0" text="Prenom">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="name" layoutX="200.0" layoutY="100.0" />
+            <TextField fx:id="firstname" layoutX="200.0" layoutY="150.0" />
+            <TextField fx:id="User_name" layoutX="200.0" layoutY="200.0" />
+            <TextField fx:id="password" layoutX="200.0" layoutY="250.0" />
+            <Label layoutX="50.0" layoutY="200.0" text="Nom D'utilisateur">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="250.0" text="Mot De Passe">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="221.0" layoutY="308.0" mnemonicParsing="false" onMouseClicked="#Sauvgarder" text="Creer" />
+         </children>
+      </Pane>
+      <Pane fx:id="CreerQuestion" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" minHeight="475.0" prefHeight="475.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+         <children>
+            <SplitPane dividerPositions="0.05102040816326531, 0.3693877551020408, 0.5" orientation="VERTICAL" prefHeight="475.0" prefWidth="640.0">
+              <items>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="QuizQuestion" mnemonicParsing="false" onMouseClicked="#AjouterQuestion" text="Ajouter" />
+                        <Label layoutX="84.0" layoutY="1.0" text="Nom De Quiz">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="353.0" layoutY="1.0" text="Nom De Notion ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="QuizQ" layoutX="187.0" layoutY="-1.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="NotionQ" layoutX="470.0" prefHeight="23.0" prefWidth="100.0" />
+                     </children>
+                  </AnchorPane>
+                <AnchorPane maxHeight="-Infinity" minHeight="150.0" minWidth="0.0" prefHeight="153.0" prefWidth="638.0">
+                     <children>
+                        <Label layoutX="300.0" layoutY="28.0" text="QCM">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="24.0" layoutY="60.0" text="QUESTION">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="24.0" layoutY="88.0" text="Les Choix">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Qcm" layoutX="141.0" layoutY="55.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="0.0" />
+                        <TextField fx:id="QcmA" layoutX="141.0" layoutY="86.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="QcmB" layoutX="266.0" layoutY="86.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="QcmC" layoutX="397.0" layoutY="86.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="QcmD" layoutX="531.0" layoutY="86.0" prefHeight="23.0" prefWidth="100.0" />
+                        <Label layoutX="124.0" layoutY="88.0" text="A)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="253.0" layoutY="88.0" text="B)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="383.0" layoutY="88.0" text="C)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="516.0" layoutY="88.0" text="D)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="A" layoutX="191.0" layoutY="119.0" mnemonicParsing="false" text="A" />
+                        <RadioButton fx:id="B" layoutX="303.0" layoutY="120.0" mnemonicParsing="false" text="B" />
+                        <RadioButton fx:id="C" layoutX="447.0" layoutY="120.0" mnemonicParsing="false" text="C" />
+                        <RadioButton fx:id="D" layoutX="581.0" layoutY="119.0" mnemonicParsing="false" text="D" />
+                        <Label layoutX="24.0" layoutY="118.0" text="LES REPONSES CORRECTS">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane maxHeight="-Infinity" minHeight="150.0" minWidth="0.0" prefHeight="150.0" prefWidth="638.0" SplitPane.resizableWithParent="false">
+                     <children>
+                        <Label layoutX="300.0" layoutY="10.0" text="QCU">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="34.0" layoutY="51.0" text="QUESTION">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="34.0" layoutY="98.0" text="Les Choix">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="Qcu" layoutX="151.0" layoutY="49.0" prefHeight="23.0" prefWidth="485.0" />
+                        <TextField fx:id="QcuA" layoutX="151.0" layoutY="96.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="QcuB" layoutX="276.0" layoutY="96.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="QcuC" layoutX="407.0" layoutY="96.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="QcuD" layoutX="541.0" layoutY="96.0" prefHeight="23.0" prefWidth="100.0" />
+                        <Label layoutX="134.0" layoutY="98.0" text="A)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="263.0" layoutY="98.0" text="B)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="393.0" layoutY="98.0" text="C)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="526.0" layoutY="98.0" text="D)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="34.0" layoutY="127.0" text="LA REPONSE CORRECT">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <RadioButton fx:id="a" layoutX="201.0" layoutY="129.0" mnemonicParsing="false" text="A">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="REPONSE" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="b" layoutX="313.0" layoutY="130.0" mnemonicParsing="false" text="B" toggleGroup="$REPONSE" />
+                        <RadioButton fx:id="c" layoutX="457.0" layoutY="130.0" mnemonicParsing="false" text="C" toggleGroup="$REPONSE" />
+                        <RadioButton fx:id="d" layoutX="591.0" layoutY="129.0" mnemonicParsing="false" text="D" toggleGroup="$REPONSE" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane maxHeight="-Infinity" minHeight="150.0" minWidth="0.0" prefHeight="150.0" prefWidth="0.0">
+                     <children>
+                        <Label layoutX="300.0" layoutY="10.0" text="QO">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="45.0" layoutY="40.0" text="QUESTION">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="17.0" layoutY="75.0" text="Les CORRECTS REPONSES">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="QO" layoutX="161.0" layoutY="38.0" prefHeight="23.0" prefWidth="474.0" />
+                        <TextField fx:id="QOA" layoutX="79.0" layoutY="105.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="QOB" layoutX="250.0" layoutY="105.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="QOC" layoutX="420.0" layoutY="105.0" prefHeight="23.0" prefWidth="100.0" />
+                        <TextField fx:id="QOD" layoutX="551.0" layoutY="105.0" prefHeight="23.0" prefWidth="85.0" />
+                        <Label layoutX="45.0" layoutY="107.0" text="A)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="229.0" layoutY="107.0" text="B)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="398.0" layoutY="107.0" text="C)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="536.0" layoutY="107.0" text="D)">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

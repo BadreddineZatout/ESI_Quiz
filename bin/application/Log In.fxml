@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.TPController">
+   <children>
+      <Label layoutX="152.0" layoutY="39.0" text="Bienvenu à ESI Quiz">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
+      <TextField fx:id="user_box" layoutX="314.0" layoutY="151.0" />
+      <PasswordField fx:id="pass_box" layoutX="314.0" layoutY="200.0" />
+      <Label layoutX="177.0" layoutY="155.0" text="Nom d'Utilisateur" />
+      <Label layoutX="177.0" layoutY="204.0" text="Password" />
+      <RadioButton fx:id="Formateur" layoutX="257.0" layoutY="283.0" mnemonicParsing="false" text="Formateur">
+         <toggleGroup>
+            <ToggleGroup fx:id="user_type" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="App" layoutX="256.0" layoutY="316.0" mnemonicParsing="false" text="Apprenant" toggleGroup="$user_type" />
+      <Button fx:id="Button" layoutX="262.0" layoutY="390.0" mnemonicParsing="false" onMouseClicked="#Authen" text="Connection" />
+      <Label fx:id="label0" layoutX="176.0" layoutY="248.0" text="Le nom d'utilisateur ou le mot de passe est incorrect" textFill="RED" visible="false" />
+      <Label fx:id="label1" layoutX="234.0" layoutY="355.0" text="il n'y a aucun apprenent" textFill="RED" visible="false" />
+      <Label fx:id="label2" layoutX="147.0" layoutY="355.0" text="Il faut choisir si vous etes un formateur ou un apprenant" textFill="RED" visible="false" />
+   </children>
+</AnchorPane>
